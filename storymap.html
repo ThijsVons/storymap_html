@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select an image to view</title>
+    <title>Single Image Selector</title>
     <style>
         /* Set the background color of the entire HTML file */
         body {
-            background-color: black;
-            color: white;
+            background-color: white; /* Changed from black to white */
+            color: black; /* Changed from white to black for text contrast */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
         }
         .selector-box {
-            border: 2px solid #333;
+            border: 2px solid #ccc; /* Light gray border for visibility */
             padding: 20px;
             margin-bottom: 20px;
             width: 300px;
             border-radius: 8px;
-            background-color: #222;
+            background-color: #f9f9f9; /* Light gray background for the selector box */
         }
         .selector-box div {
             display: flex;
@@ -36,11 +36,11 @@
             gap: 10px;
         }
         .image-container img {
-            max-width: 1000px; /* Change this value to adjust the maximum width of images */
+            max-width: 1000px; /* Adjust the maximum width of images */
             height: auto; /* Maintains aspect ratio */
             display: none; /* Hide images by default */
-            border: 2px solid white; /* Add a border to the images */
-            border-radius: 8px; /* Add rounded corners to the images */
+            border: 2px solid #ccc; /* Light gray border for images */
+            border-radius: 8px; /* Rounded corners for images */
         }
     </style>
 </head>
@@ -58,10 +58,10 @@
     <script>
         // Array of image sources
         const images = [
-            { src: "Storymap_plots/A58_Zeeland_boxplot_speed_day_B.png", alt: "Speed boxplot day" },
-            { src: "Storymap_plots/A58_Zeeland_boxplot_intensity_day_B.png", alt: "Intensity boxplot day" },
-            { src: "Storymap_plots/A58_Zeeland_raw_data_speed_day_B.png", alt: "Raw data speed day" },
-            { src: "Storymap_plots/A58_Zeeland_raw_data_intensity_day_B.png", alt: "Raw data intesity day" }
+            { src: "../Results/Storymap_plots/A58_Zeeland_boxplot_speed_day_B.png", alt: "Speed boxplot day" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_boxplot_intensity_day_B.png", alt: "Intensity boxplot day" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_raw_data_speed_day_B.png", alt: "Raw data speed day" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_raw_data_intensity_day_B.png", alt: "Raw data intesity day" }
         ];
 
         const radioContainer = document.getElementById("radio-container");
