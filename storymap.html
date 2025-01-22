@@ -3,10 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Display</title>
+    <title>Single Image Selector</title>
+    <style>
+        /* Set the background color of the entire HTML file */
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .selector-box {
+            border: 2px solid #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 300px;
+            border-radius: 8px;
+            background-color: #222;
+        }
+        .selector-box div {
+            display: flex;
+            align-items: center; /* Align text and selector horizontally */
+            margin-bottom: 10px;
+        }
+        .selector-box label {
+            margin-left: 8px; /* Add space between radio button and text */
+            cursor: pointer;
+        }
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .image-container img {
+            max-width: 1000px; /* Change this value to adjust the maximum width of images */
+            height: auto; /* Maintains aspect ratio */
+            display: none; /* Hide images by default */
+            border: 2px solid white; /* Add a border to the images */
+            border-radius: 8px; /* Add rounded corners to the images */
+        }
+    </style>
 </head>
 <body>
-    <h1>My Image</h1>
-    <img src="download.png" alt="A beautiful image" width="500" height="auto">
+    <h1>Select an Image to Display</h1>
+    
+    <div class="selector-box" id="radio-container">
+        <!-- Radio buttons will be dynamically generated here -->
+    </div>
+    
+    <div class="image-container" id="image-container">
+        <!-- Images will be dynamically generated here -->
+    </div>
+
+    <script>
+        // Array of image sources
+        const images = [
+            { src: "Storymap_plots/A58_Zeeland_boxplot_speed_day_B.png", alt: "Speed boxplot day" },
+            { src: "Storymap_plots/A58_Zeeland_boxplot_intensity_day_B.png", alt: "Intensity boxplot day" },
+            { src: "Storymap_plots/A58_Zeeland_raw_data_speed_day_B.png", alt: "Raw data speed day" },
+            { src: "Storymap_plots/A58_Zeeland_raw_data_intensity_day_B.png", alt: "Raw data intesity day" }
+        ];
+
+        const radioContainer = document.getElementById("radio-container");
+        const imageContainer = document.getElementById("image-container");
+
+        // Function to create radio buttons and images
+        function createImageSelectors() {
+            images.forEach((image, index) => {
+                // Create a radio button
+                const radio = document.createElement("input");
+                radio.type = "radio";
+                radio.name = "image-selector"; // Group radio buttons
+                radio.id = `radio-${index}`;
+                radio.addEventListener("change", () => showImage(index));
+
+                // Create a label for the radio button
+                const label = document.createElement("label");
+                label.htmlFor = `radio-${index}`;
+                label.textContent = image.alt;
+
+                // Wrap radio button and label in a div for styling
+                const wrapper = document.createElement("div");
+                wrapper.appendChild(radio);
+                wrapper.appendChild(label);
+                radioContainer.appendChild(wrapper);
+
+                // Create an image element
+                const img = document.createElement("img");
+                img.src = image.src;
+                img.alt = image.alt;
+                img.id = `image-${index}`;
+                imageContainer.appendChild(img);
+            });
+        }
+
+        // Function to show the selected image and hide others
+        function showImage(index) {
+            images.forEach((_, i) => {
+                const img = document.getElementById(`image-${i}`);
+                img.style.display = i === index ? "block" : "none";
+            });
+        }
+
+        // Initialize the page
+        createImageSelectors();
+    </script>
 </body>
 </html>
