@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select an image to view</title>
+    <title>Single Image Selector</title>
     <style>
         /* Set the background color of the entire HTML file */
         body {
@@ -14,21 +14,22 @@
             padding: 20px;
         }
         .selector-box {
-            border: 2px solid #ccc; /* Light gray border for visibility */
-            padding: 20px;
+            border: 1px solid #ccc; /* Light gray border */
+            padding: 10px; /* Reduced padding */
             margin-bottom: 20px;
-            width: 300px;
+            width: 150px; /* Reduced width to make the box smaller */
             border-radius: 8px;
-            background-color: #f9f9f9; /* Light gray background for the selector box */
+            background-color: #f9f9f9; /* Light gray background */
         }
         .selector-box div {
             display: flex;
             align-items: center; /* Align text and selector horizontally */
-            margin-bottom: 10px;
+            margin-bottom: 5px; /* Reduced margin between rows */
         }
         .selector-box label {
-            margin-left: 8px; /* Add space between radio button and text */
+            margin-left: 5px; /* Reduced space between radio button and text */
             cursor: pointer;
+            font-size: 10px; /* Smaller font size for labels */
         }
         .image-container {
             display: flex;
@@ -36,16 +37,16 @@
             gap: 10px;
         }
         .image-container img {
-            max-width: 1000px; /* Adjust the maximum width of images */
+            max-width: 500px; /* Adjust the maximum width of images */
             height: auto; /* Maintains aspect ratio */
             display: none; /* Hide images by default */
-            border: 2px solid #ccc; /* Light gray border for images */
+            border: 1px solid #ccc; /* Light gray border for images */
             border-radius: 8px; /* Rounded corners for images */
         }
     </style>
 </head>
 <body>
-    <h1>Select an Image to Display</h1>
+    <h3>Select an Image to Display</h3>
     
     <div class="selector-box" id="radio-container">
         <!-- Radio buttons will be dynamically generated here -->
@@ -60,8 +61,8 @@
         const images = [
             { src: "Storymap_plots/A58_Zeeland_boxplot_speed_day_B.png", alt: "Speed boxplot day" },
             { src: "Storymap_plots/A58_Zeeland_boxplot_intensity_day_B.png", alt: "Intensity boxplot day" },
-            { src: "Storymap_plots/A58_Zeeland_raw_data_speed_day_B.png", alt: "Raw data speed day" },
-            { src: "Storymap_plots/A58_Zeeland_raw_data_intensity_day_B.png", alt: "Raw data intesity day" }
+            { src: "Storymap_plots/A58_Zeeland_moving_average_filtered_data_speed_day_B.png", alt: "Moving average speed day" },
+            { src: "Storymap_plots/A58_Zeeland_moving_average_filtered_data_intensity_day_B.png", alt: "Moving average intesity day" }
         ];
 
         const radioContainer = document.getElementById("radio-container");
