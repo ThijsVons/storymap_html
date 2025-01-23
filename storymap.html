@@ -3,31 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select image to view</title>
+    <title>Single Image Selector</title>
     <style>
         /* Set the background color of the entire HTML file */
         body {
-            background-color: white; /* Changed from black to white */
-            color: black; /* Changed from white to black for text contrast */
+            background-color: white; /* White background */
+            color: black; /* Black text for contrast */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            font-size: 12px; /* Reduced font size for the entire page */
         }
         .selector-box {
             border: 1px solid #ccc; /* Light gray border */
-            padding: 10px; /* Reduced padding */
+            padding: 10px; /* Padding inside the box */
             margin-bottom: 20px;
-            width: 150px; /* Reduced width to make the box smaller */
+            width: 600px; /* Triple the original width */
             border-radius: 8px;
             background-color: #f9f9f9; /* Light gray background */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+            gap: 10px; /* Space between columns and rows */
         }
         .selector-box div {
             display: flex;
             align-items: center; /* Align text and selector horizontally */
-            margin-bottom: 5px; /* Reduced margin between rows */
         }
         .selector-box label {
-            margin-left: 5px; /* Reduced space between radio button and text */
+            margin-left: 5px; /* Space between radio button and text */
             cursor: pointer;
             font-size: 10px; /* Smaller font size for labels */
         }
@@ -46,7 +49,7 @@
     </style>
 </head>
 <body>
-    <h3>Select an Image to Display</h3>
+    <h1 style="font-size: 14px;">Select an Image to Display</h1> <!-- Smaller font size for header -->
     
     <div class="selector-box" id="radio-container">
         <!-- Radio buttons will be dynamically generated here -->
@@ -57,12 +60,20 @@
     </div>
 
     <script>
-        // Array of image sources
+        // Array of 12 image sources
         const images = [
-            { src: "Storymap_plots/A58_Zeeland_boxplot_speed_day_B.png", alt: "Speed boxplot day" },
-            { src: "Storymap_plots/A58_Zeeland_boxplot_intensity_day_B.png", alt: "Intensity boxplot day" },
-            { src: "Storymap_plots/A58_Zeeland_moving_average_filtered_data_speed_day_B.png", alt: "Moving average speed day" },
-            { src: "Storymap_plots/A58_Zeeland_moving_average_filtered_data_intensity_day_B.png", alt: "Moving average intesity day" }
+            { src: "../Results/Storymap_plots/A58_Zeeland_raw_data_speed_day_B.png", alt: "Raw data speed" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_moving_average_filtered_data_speed_day_B.png", alt: "Moving average speed day" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_boxplot_speed_night_B.png", alt: "Boxplot night" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_raw_data_intensity_day_B.png", alt: "Raw data intensity" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_moving_average_filtered_data_intensity_day_B.png", alt: "Moving average intensity day" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_boxplot_intensity_night_B.png", alt: "Boxplot intensity night" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_boxplot_speed_day_B.png", alt: "Boxplot speed day" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_moving_average_filtered_data_speed_day_B_cutout_29-10_05-11.png", alt: "Moving average speed day cut out" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_moving_average_filtered_data_speed_night_B.png", alt: "Moving average speed night" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_boxplot_intensity_day_B.png", alt: "Boxplot intensity day" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_moving_average_filtered_data_intensity_day_B_cutout_29-10_05-11.png", alt: "Moving average intensity day cut out" },
+            { src: "../Results/Storymap_plots/A58_Zeeland_moving_average_filtered_data_intensity_night_B.png", alt: "Moving average intensity night" }
         ];
 
         const radioContainer = document.getElementById("radio-container");
